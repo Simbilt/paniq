@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Must match the GitHub repo name for Pages: https://<user>.github.io/<repo>/
+// Dev: '/'. Production: CI passes `vite build --base /<repo>/` (see deploy workflow).
+// Local production test: npm run build -- --base /YOUR_REPO_NAME/
 export default defineConfig(({ command }) => ({
   plugins: [react()],
   base: command === 'build' ? '/paniq/' : '/',
