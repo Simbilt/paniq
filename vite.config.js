@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Relative base works for username.github.io/<repo>/ without hard-coding the repo name.
-export default defineConfig({
+// Must match the GitHub repo name for Pages: https://<user>.github.io/<repo>/
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: './',
+  base: command === 'build' ? '/paniq/' : '/',
   build: {
     rollupOptions: {
       output: {
@@ -16,4 +16,4 @@ export default defineConfig({
       },
     },
   },
-})
+}))
