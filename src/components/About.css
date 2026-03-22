@@ -1,0 +1,131 @@
+.about {
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(40px, 8vw, 60px);
+}
+
+.section-title {
+  font-size: clamp(1.85rem, 6vw, 4rem);
+  font-weight: 800;
+  color: var(--green-primary);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.title-underline {
+  width: min(100px, 28vw);
+  height: 4px;
+  background: var(--green-primary);
+  margin: 0 auto;
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.45);
+  transform-origin: center;
+}
+
+.about.section-visible .title-underline {
+  animation: underlineGrow 0.85s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) 0.2s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about.section-visible .title-underline {
+    animation: none;
+  }
+}
+
+@keyframes underlineGrow {
+  from {
+    transform: scaleX(0.2);
+    opacity: 0.5;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-description {
+  font-size: clamp(1rem, 3.5vw, 1.1rem);
+  line-height: 1.85;
+  color: var(--text-light);
+  margin-bottom: clamp(18px, 4vw, 25px);
+  text-align: center;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(12px, 3vw, 30px);
+  margin-top: clamp(36px, 8vw, 50px);
+}
+
+.stat-item {
+  text-align: center;
+  padding: clamp(20px, 5vw, 30px) clamp(14px, 4vw, 20px);
+  background: var(--bg-card);
+  border-radius: 14px;
+  border: 1px solid rgba(0, 255, 136, 0.12);
+  transition:
+    transform 0.4s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+    border-color 0.3s ease,
+    box-shadow 0.4s ease;
+}
+
+@media (hover: hover) {
+  .stat-item:hover {
+    border-color: rgba(0, 255, 136, 0.45);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 255, 136, 0.12);
+  }
+}
+
+.stat-item:active {
+  transform: scale(0.98);
+}
+
+.stat-number {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 900;
+  color: var(--green-primary);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stat-d0 {
+  transition-delay: 0.12s;
+}
+
+.stat-d1 {
+  transition-delay: 0.22s;
+}
+
+.stat-d2 {
+  transition-delay: 0.32s;
+}
+
+@media (max-width: 640px) {
+  .about-stats {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
